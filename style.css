@@ -172,10 +172,12 @@ form .buttons{
     display: flex;
     align-items: center;
 }
+.form.first .nextBtn {
+    margin-top: 110px;
+}
 
 form .buttons button, .backBtn{
     margin-right: 14px;
-
 }
 
 
