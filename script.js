@@ -20,9 +20,33 @@ nextBtn.addEventListener("click", (event) => {
             return;
         }
     }
-    
 
-    
+    // Add phone validation
+    const telefono = document.querySelector("#Teléfono input");
+    if (telefono && (!/^[0-9]+$/.test(telefono.value) || telefono.value.length < 7)) {
+        alert("El teléfono debe contener solo números y tener al menos 7 dígitos.");
+        telefono.focus();
+        event.preventDefault();
+        return;
+    }
+
+    // Add email validation
+    const email = document.querySelector("#Correo\\ Electrónico input");
+    if (email && !/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(email.value)) {
+        alert("Por favor ingrese un correo electrónico válido.");
+        email.focus();
+        event.preventDefault();
+        return;
+    }
+
+    // Add NIT/RUT validation
+    if (nitRut && (!/^[0-9]+$/.test(nitRut.value) || parseInt(nitRut.value) <= 0)) {
+        alert("El NIT/RUT debe ser un número válido.");
+        nitRut.focus();
+        event.preventDefault();
+        return;
+    }
+
     if (numeroFactura && (!/^[0-9]+$/.test(numeroFactura.value) || parseInt(numeroFactura.value) <= 0)) {
         alert("El número de factura debe ser un número .");
         numeroFactura.focus();
@@ -32,7 +56,6 @@ nextBtn.addEventListener("click", (event) => {
     
     form.classList.add('secActive');
 });
-
 backBtn.addEventListener("click", () => form.classList.remove('secActive'));
 
 submitBtn.addEventListener("click", (event) => {
@@ -44,22 +67,7 @@ submitBtn.addEventListener("click", (event) => {
             return;
         }
     }
-    if (nitRut && (!/^[0-9]+$/.test(nitRut.value) || parseInt(nitRut.value) <= 0)) {
-        alert("El NIT/RUT debe ser un número.");
-        nitRut.focus();
-        event.preventDefault();
-        return;
-    }
     
-    
-    if (emaill && !/^[^@]+@[^@]+\.com$/.test(emaill.value)) {
-        alert("Formato de correo electronico invalido.");
-        emaill.focus();
-        event.preventDefault();
-        return;
-    }
-    
-
     alert("Formulario enviado con éxito.");
 });
 
@@ -70,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const precioUnitario = document.querySelector('input[placeholder="Precio por unidad"]');
     const iva = document.querySelector('input[placeholder="Porcentaje de IVA"]');
     const descuento = document.querySelector('input[placeholder="Porcentaje de descuento"]');
-    const total = document.querySelector('input[readonly]');
+    const total = document.getElementById('totalAmount');
 
     function calculateTotal() {
         const cant = parseFloat(cantidad.value) || 0;
@@ -84,12 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const finalTotal = subtotal + ivaAmount - descAmount;
 
         total.value = finalTotal.toFixed(2);
+        // Force display update
+        total.dispatchEvent(new Event('change'));
     }
 
     [cantidad, precioUnitario, iva, descuento].forEach(input => {
         input.addEventListener('input', calculateTotal);
     });
 });
+
 
 
 window.addEventListener('load', () => {
