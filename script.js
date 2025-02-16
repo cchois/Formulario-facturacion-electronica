@@ -1,27 +1,88 @@
 const form = document.querySelector("form"),
-        nextBtn = form.querySelector(".nextBtn"),
-        backBtn = form.querySelector(".backBtn"),
-        allInput = form.querySelectorAll(".first input");
+      nextBtn = form.querySelector(".nextBtn"),
+      backBtn = form.querySelector(".backBtn"),
+      firstFormInputs = form.querySelectorAll(".form.first input[required], .form.first select[required]"),
+      secondFormInputs = form.querySelectorAll(".form.second input[required], .form.second select[required]"),
+      submitBtn = form.querySelector(".submit");
 
+const nitRut = document.querySelector("#NIT\\/RUT input"),
+      telefono = document.querySelector("#Teléfono input"),
+      email = document.querySelector("#Correo\\ Electrónico input"),
+      emaill = document.querySelector("#Correo\\ Electrónicoo input"),
+      numeroFactura = document.querySelector("#Número\\ de\\ Factura input");
 
-
-
-
-nextBtn.addEventListener("click", ()=> {
-    allInput.forEach(input => {
-        if(input.value != ""){
-            form.classList.add('secActive');
-        }else{
-            form.classList.remove('secActive');
-
-
+nextBtn.addEventListener("click", (event) => {
+    for (const input of firstFormInputs) {
+        if (input.value.trim() === "") {
+            alert(`El campo "${input.previousElementSibling.textContent}" es obligatorio.`);
+            input.focus();
+            event.preventDefault();
+            return;
         }
-    })
-})
+    }
+    
+    if (nitRut && (!/^[0-9]+$/.test(nitRut.value) || parseInt(nitRut.value) <= 0)) {
+        alert("El NIT/RUT debe ser un número.");
+        nitRut.focus();
+        event.preventDefault();
+        return;
+    }
+    
+    if (telefono && (!/^[0-9]+$/.test(telefono.value) || parseInt(telefono.value) <= 0)) {
+        alert("El teléfono debe ser un número.");
+        telefono.focus();
+        event.preventDefault();
+        return;
+    }
+    
+    if (email && !/^[^@]+@[^@]+\.com$/.test(email.value)) {
+        alert("Formato de correo electronico invalido.");
+        email.focus();
+        event.preventDefault();
+        return;
+    }
+    
+    if (numeroFactura && (!/^[0-9]+$/.test(numeroFactura.value) || parseInt(numeroFactura.value) <= 0)) {
+        alert("El número de factura debe ser un número .");
+        numeroFactura.focus();
+        event.preventDefault();
+        return;
+    }
+    
+    form.classList.add('secActive');
+});
 
 backBtn.addEventListener("click", () => form.classList.remove('secActive'));
 
+submitBtn.addEventListener("click", (event) => {
+    for (const input of secondFormInputs) {
+        if (input.value.trim() === "") {
+            alert(`El campo "${input.previousElementSibling.textContent}" es obligatorio.`);
+            input.focus();
+            event.preventDefault();
+            return;
+        }
+    }
+    if (nitRut && (!/^[0-9]+$/.test(nitRut.value) || parseInt(nitRut.value) <= 0)) {
+        alert("El NIT/RUT debe ser un número.");
+        nitRut.focus();
+        event.preventDefault();
+        return;
+    }
+    
+    
+    if (emaill && !/^[^@]+@[^@]+\.com$/.test(emaill.value)) {
+        alert("Formato de correo electronico invalido.");
+        emaill.focus();
+        event.preventDefault();
+        return;
+    }
+    
 
+    alert("Formulario enviado con éxito.");
+});
+
+        
 
 document.addEventListener('DOMContentLoaded', function() {
     const cantidad = document.querySelector('input[placeholder="Cantidad"]');
@@ -48,3 +109,4 @@ document.addEventListener('DOMContentLoaded', function() {
         input.addEventListener('input', calculateTotal);
     });
 });
+
