@@ -16,30 +16,33 @@
         <header>Facturacion</header>
         <form action ='#'>
             <div class="form first">
-                <div class="trasnmitor details">
-                    <span class="title">Datos del Emisor</span>
+                <div class="receiver details">
+                    <span class="title">Datos del Receptor</span>
                     <div class="fields">
                         <div class="input-field">
                             <label>Nombre o Razón Social</label>
-                            <input type="text" value="GLASS MACHINE S.A.S" readonly>
+                            <input type="text" placeholder="Nombre del cliente" required>
                         </div>
                         <div class="input-field" id="NIT/RUT">
                             <label>NIT/RUT</label>
-                            <input type="text" value="9012306527" readonly>
+                            <input type="text" placeholder="NIT/RUT del cliente" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Ciudad</label>
+                            <input type="text" placeholder="Ciudad del cliente" required>
                         </div>
                         <div class="input-field" id="Correo Electrónico">
                             <label>Correo Electrónico</label>
-                            <input type="email" value="contacto@glassmachine.com" readonly>
+                            <input type="email" placeholder="Email del cliente" required>
                         </div>
                         <div class="input-field" id="Teléfono">
                             <label>Teléfono</label>
-                            <input type="tel" value=" 3001234567" readonly>
+                            <input type="tel" placeholder="Teléfono del cliente" required>
                         </div>
                         <div class="input-field">
                             <label>Dirección</label>
-                            <input type="text" value="CL 63 #67-47" readonly>
+                            <input type="text" placeholder="Dirección del cliente" required>
                         </div>
-
                     </div>
                 </div>
                 <div class="Facture details">
@@ -70,31 +73,8 @@
                     </button>
                 </div>
             </div>
-            
-
-            <div class="form second">
-                <div class="receiver">
-                    <span class="title">Datos del Receptor</span>
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Nombre o Razón Social</label>
-                            <input type="text" placeholder="Nombre del cliente" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Identificación Fiscal</label>
-                            <input type="text" placeholder="NIT/RUT del cliente" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Dirección</label>
-                            <input type="text" placeholder="Dirección del cliente" required>
-                        </div>
-                        <div class="input-field" id="Correo Electrónicoo">
-                            <label>Correo Electrónico</label>
-                            <input type="emaill" placeholder="Email del cliente" required>
-                        </div>
-                    </div>
-                </div>
-            
+    
+            <div class="form second">        
                 <div class="product details">
                     <span class="title">Detalle de Productos/Servicios</span>
                     <div class="fields">
@@ -120,21 +100,21 @@
                         </div>
                         <div class="input-field">
                             <label>Total</label>
-                            <input type="number" readonly>
+                            <input type="number" id="totalAmount" readonly>
                         </div>
                     </div>
 
                    <div class="buttons">
-                    <div class="backBtn">
-                        <span class="btnText">Back</span>
-                        <i class="uil uil-navigator"></i>
+                        <div class="backBtn">
+                            <span class="btnText">Back</span>
+                            <i class="uil uil-navigator"></i>
+                        </div>
+    
+                        <button class="submit">
+                            <span class="submit">Submit</span> 
+                            <i class="uil uil-navigator"></i>
+                        </button>                                  
                     </div>
- 
-                    <button class="submit">
-                         <span class="submit">Submit</span> 
-                         <i class="uil uil-navigator"></i>
-                    </button>                                  
-               </div>
            </div>
            
         </form>
