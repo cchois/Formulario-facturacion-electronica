@@ -1,5 +1,22 @@
-document.getElementById('miFormulario').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Formulario enviado con éxito');
-    // Aquí puedes agregar lógica para enviar los datos a un servidor
-});
+const form = document.querySelector("form"),
+        nextBtn = form.querySelector(".nextBtn"),
+        backBtn = form.querySelector(".backBtn"),
+        allInput = form.querySelectorAll(".first input");
+
+
+
+
+
+nextBtn.addEventListener("click", ()=> {
+    allInput.forEach(input => {
+        if(input.value != ""){
+            form.classList.add('secActive');
+        }else{
+            form.classList.remove('secActive');
+
+
+        }
+    })
+})
+
+backBtn.addEventListener("click", () => form.classList.remove('secActive'));
