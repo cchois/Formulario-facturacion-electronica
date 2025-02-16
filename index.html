@@ -13,7 +13,7 @@
 </head> 
 <body> 
     <div class="container">
-        <header>Registration</header>
+        <header>Facturacion</header>
         <form action ='#'>
             <div class="form first">
                 <div class="trasnmitor details">
@@ -21,37 +21,27 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Nombre o Razón Social</label>
-                            <input type="text" placeholder="Ingrese nombre o razón social" required>
+                            <input type="text" value="GLASS MACHINE S.A.S" readonly>
                         </div>
                         <div class="input-field" id="NIT/RUT">
                             <label>NIT/RUT</label>
-                            <input type="text" placeholder="Ingrese su identificación fiscal" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Dirección</label>
-                            <input type="text" placeholder="Ingrese dirección completa" required>
-                        </div>
-                        <div class="input-field" id="Teléfono">
-                            <label>Teléfono</label>
-                            <input type="tel" placeholder="Ingrese teléfono" required>
+                            <input type="text" value="9012306527" readonly>
                         </div>
                         <div class="input-field" id="Correo Electrónico">
                             <label>Correo Electrónico</label>
-                            <input type="email" placeholder="Ingrese email" required>
+                            <input type="email" value="contacto@glassmachine.com" readonly>
+                        </div>
+                        <div class="input-field" id="Teléfono">
+                            <label>Teléfono</label>
+                            <input type="tel" value=" 3001234567" readonly>
                         </div>
                         <div class="input-field">
-                            <label>Régimen Tributario</label>
-                            <select required>
-                                <option value="">Seleccione régimen</option>
-                                <option value="especial">Régimen Especial</option>
-                                <option value="comun">Régimen Común</option>
-                                <option value="simplificado">Régimen Simplificado</option>
-                            </select>
+                            <label>Dirección</label>
+                            <input type="text" value="CL 63 #67-47" readonly>
                         </div>
+
                     </div>
                 </div>
-
-                
                 <div class="Facture details">
                     <span class="title">Información de Factura</span>
                     <div class="fields">
@@ -61,7 +51,7 @@
                         </div>
                         <div class="input-field">
                             <label>Fecha de Emisión</label>
-                            <input type="datetime-local" required>
+                            <input type="datetime-local" id="fechaEmision" readonly>
                         </div>
                         <div class="input-field">
                             <label>Forma de Pago</label>
@@ -146,6 +136,7 @@
                     </button>                                  
                </div>
            </div>
+           
         </form>
     </div>
 
