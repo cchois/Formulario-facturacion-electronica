@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Factura PDF</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        label {
+            flex: 0 0 150px;
+            color: #555;
+            font-weight: 500;
+        }
+        input {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #0078d7;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005a9e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generar Factura PDF</h1>
+        <form id="pdfForm">
+            <div>
+                <label for="NombreCliente">Nombre Cliente:</label>
+                <input type="text" id="NombreCliente" name="NombreCliente" required>
+            </div>
+            <div>
+                <label for="Cedula">Cédula:</label>
+                <input type="text" id="Cedula" name="Cedula" required>
+            </div>
+            <div>
+                <label for="Direccion">Dirección:</label>
+                <input type="text" id="Direccion" name="Direccion" required>
+            </div>
+            <div>
+                <label for="Ciudad">Ciudad:</label>
+                <input type="text" id="Ciudad" name="Ciudad" required>
+            </div>
+            <div>
+                <label for="Telefono">Teléfono:</label>
+                <input type="text" id="Telefono" name="Telefono" required>
+            </div>
+            <div>
+                <label for="FormaPago">Forma de Pago:</label>
+                <input type="text" id="FormaPago" name="FormaPago" required>
+            </div>
+            <div>
+                <label for="MedioPago">Medio de Pago:</label>
+                <input type="text" id="MedioPago" name="MedioPago" required>
+            </div>
+            <div>
+                <label for="Codigo">Código:</label>
+                <input type="text" id="Codigo" name="Codigo" required>
+            </div>
+            <div>
+                <label for="Descripcion">Descripción:</label>
+                <input type="text" id="Descripcion" name="Descripcion" required>
+            </div>
+            <div>
+                <label for="BOD">BOD:</label>
+                <input type="text" id="BOD" name="BOD" required>
+            </div>
+            <div>
+                <label for="Cantidad">Cantidad:</label>
+                <input type="number" id="Cantidad" name="Cantidad" required>
+            </div>
+            <div>
+                <label for="CostoUnitario">Costo Unitario:</label>
+                <input type="number" step="any" id="CostoUnitario" name="CostoUnitario" required>
+            </div>
+            <div>
+                <label for="IVA">IVA:</label>
+                <input type="number" step="any" id="IVA" name="IVA" required>
+            </div>
+            <div>
+                <label for="CostoTotal">Costo Total:</label>
+                <input type="number" step="any" id="CostoTotal" name="CostoTotal" required>
+            </div>
+            <div>
+                <label for="notaNumber">Nota número:</label>
+                <input type="text" id="notaNumber" name="notaNumber" required>
+            </div>
+            <div>
+                <label for="valorBruto">Valor Bruto:</label>
+                <input type="number" step="any" id="valorBruto" name="valorBruto" required>
+            </div>
+            <div>
+                <label for="descuento">Descuento:</label>
+                <input type="number" step="any" id="descuento" name="descuento" required>
+            </div>
+            <div>
+                <label for="subtotal">Subtotal:</label>
+                <input type="number" step="any" id="subtotal" name="subtotal" required>
+            </div>
+            <div>
+                <label for="iva">IVA (detalle):</label>
+                <input type="number" step="any" id="iva" name="iva" required>
+            </div>
+            <div>
+                <label for="retenciones">Retenciones:</label>
+                <input type="number" step="any" id="retenciones" name="retenciones" required>
+            </div>
+            <div>
+                <label for="totalPagar">Total a Pagar:</label>
+                <input type="number" step="any" id="totalPagar" name="totalPagar" required>
+            </div>
+            <div>
+                <label for="valorEnLetras">Valor en Letras:</label>
+                <input type="text" id="valorEnLetras" name="valorEnLetras" required>
+            </div>
+            <br>
+            <button type="submit" onclick="genPDF()">Generar Formulario</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
