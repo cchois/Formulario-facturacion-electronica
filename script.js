@@ -21,26 +21,7 @@ nextBtn.addEventListener("click", (event) => {
         }
     }
     
-    if (nitRut && (!/^[0-9]+$/.test(nitRut.value) || parseInt(nitRut.value) <= 0)) {
-        alert("El NIT/RUT debe ser un número.");
-        nitRut.focus();
-        event.preventDefault();
-        return;
-    }
-    
-    if (telefono && (!/^[0-9]+$/.test(telefono.value) || parseInt(telefono.value) <= 0)) {
-        alert("El teléfono debe ser un número.");
-        telefono.focus();
-        event.preventDefault();
-        return;
-    }
-    
-    if (email && !/^[^@]+@[^@]+\.com$/.test(email.value)) {
-        alert("Formato de correo electronico invalido.");
-        email.focus();
-        event.preventDefault();
-        return;
-    }
+
     
     if (numeroFactura && (!/^[0-9]+$/.test(numeroFactura.value) || parseInt(numeroFactura.value) <= 0)) {
         alert("El número de factura debe ser un número .");
@@ -110,3 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+window.addEventListener('load', () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    
+    const currentDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+    document.getElementById('fechaEmision').value = currentDateTime;
+});
