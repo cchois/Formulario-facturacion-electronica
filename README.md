@@ -1,1 +1,1 @@
-# Software de faacturación electronica
+# Software de facturación electronica
