@@ -79,6 +79,10 @@
                     <span class="title">Detalle de Productos/Servicios</span>
                     <div class="fields">
                         <div class="input-field">
+                            <label>Código de Producto</label>
+                            <input type="text" placeholder="Código del producto" required>
+                        </div>
+                        <div class="input-field">
                             <label>Descripción</label>
                             <input type="text" placeholder="Descripción del producto" required>
                         </div>
@@ -89,6 +93,10 @@
                         <div class="input-field">
                             <label>Precio Unitario</label>
                             <input type="number" placeholder="Precio por unidad" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Documento de Retenciones</label>
+                            <input type="file" id="retencionesDoc" accept=".pdf,.doc,.docx" required>
                         </div>
                         <div class="input-field">
                             <label>IVA (%)</label>
@@ -102,6 +110,14 @@
                             <label>Total</label>
                             <input type="number" id="totalAmount" readonly>
                         </div>
+                        <div class="input-field" style="display: none;">
+                            <label>Valor en Letras</label>
+                            <input type="text" id="valorLetras" readonly>
+                        </div>
+                        <div class="input-field" style="display: none;">
+                            <label>Valor Bruto</label>
+                            <input type="number" id="valorBruto" readonly>
+                        </div>
                     </div>
 
                    <div class="buttons">
@@ -110,17 +126,17 @@
                             <i class="uil uil-navigator"></i>
                         </div>
     
-                        <button class="submit">
-                            <span class="submit">Submit</span> 
+                        <button class="submit" onclick="genPDF()">
+                            <span class="submit">Generar PDF</span> 
                             <i class="uil uil-navigator"></i>
-                        </button>                                  
+                        </button>                                
                     </div>
            </div>
            
         </form>
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js"></script>
 </body> 
 </html> 
