@@ -221,3 +221,40 @@ form .buttons button, .backBtn{
         width: 100%;
     }
 }
+
+@media print {
+    #bar {
+        display: none;
+    }
+    body {
+        margin: 0;
+        padding: 20px;
+    }
+}
+
+.bill-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+.input-field input[type="file"] {
+    padding: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.input-field input[type="file"]::-webkit-file-upload-button {
+    background-color: #4070f4;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-field input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #265df2;
+}
