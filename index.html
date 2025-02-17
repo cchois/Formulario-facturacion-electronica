@@ -1,20 +1,17 @@
-<!DOCTYPE html> 
-<html lang="es"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta http-equiv="X-UA-Compatible" content="IE = edge"> 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css"> 
-    
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    
-    <title>Responsive Regisration Form </title>
-</head> 
-<body> 
+    <title>Responsive Registration Form</title>
+</head>
+<body>
     <div class="container">
-        <header>Facturacion</header>
-        <form action ='#'>
+        <header>Facturación</header>
+        <form action='#'>
             <div class="form first">
                 <div class="receiver details">
                     <span class="title">Datos del Receptor</span>
@@ -73,70 +70,57 @@
                     </button>
                 </div>
             </div>
-    
-            <div class="form second">        
+
+            <div class="form second">
                 <div class="product details">
                     <span class="title">Detalle de Productos/Servicios</span>
                     <div class="fields">
-                        <div class="input-field">
-                            <label>Código de Producto</label>
-                            <input type="text" placeholder="Código del producto" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Descripción</label>
-                            <input type="text" placeholder="Descripción del producto" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Cantidad</label>
-                            <input type="number" placeholder="Cantidad" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Precio Unitario</label>
-                            <input type="number" placeholder="Precio por unidad" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Documento de Retenciones</label>
-                            <input type="file" id="retencionesDoc" accept=".pdf,.doc,.docx" required>
-                        </div>
-                        <div class="input-field">
-                            <label>IVA (%)</label>
-                            <input type="number" placeholder="Porcentaje de IVA" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Descuento (%)</label>
-                            <input type="number" placeholder="Porcentaje de descuento">
-                        </div>
-                        <div class="input-field">
-                            <label>Total</label>
-                            <input type="number" id="totalAmount" readonly>
-                        </div>
-                        <div class="input-field" style="display: none;">
-                            <label>Valor en Letras</label>
-                            <input type="text" id="valorLetras" readonly>
-                        </div>
-                        <div class="input-field" style="display: none;">
-                            <label>Valor Bruto</label>
-                            <input type="number" id="valorBruto" readonly>
-                        </div>
+                        <table id="productTable">
+                            <thead>
+                                <tr>
+                                    <th>Código de Producto</th>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>IVA (%)</th>
+                                    <th>Descuento (%)</th>
+                                    <th>Total</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="product-row">
+                                    <td><input type="text" placeholder="Código del producto" required></td>
+                                    <td><input type="text" placeholder="Descripción del producto" required></td>
+                                    <td><input type="number" placeholder="Cantidad" required></td>
+                                    <td><input type="number" placeholder="Precio por unidad" required></td>
+                                    <td><input type="number" placeholder="Porcentaje de IVA" required></td>
+                                    <td><input type="number" placeholder="Porcentaje de descuento"></td>
+                                    <td><input type="number" class="product-total" readonly></td>
+                                    <td><button type="button" class="removeBtn">Eliminar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" id="addProductBtn">Agregar Producto</button>
                     </div>
 
-                   <div class="buttons">
+                    <div class="buttons">
                         <div class="backBtn">
-                            <span class="btnText">Back</span>
+                            <span class="btnText">Atrás</span>
                             <i class="uil uil-navigator"></i>
                         </div>
-    
-                        <button class="submit" onclick="genPDF()">
-                            <span class="submit">Generar PDF</span> 
+
+                        <button class="submitBtn">
+                            <span class="submit">Generar PDF</span>
                             <i class="uil uil-navigator"></i>
-                        </button>                                
+                        </button>
                     </div>
-           </div>
-           
+                </div>
+            </div>
         </form>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js"></script>
-</body> 
-</html> 
+</body>
+</html>
